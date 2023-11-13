@@ -16,12 +16,17 @@ const imageInput = document.getElementById('photo');
 const titleInput = document.querySelector(".form-title input");
 const formOptions = document.querySelector(".form-options select");
 
+const formModal = document.querySelector(".modal-form");
+
 const labelImg = document.querySelector('.label-img'); // Élément pour afficher l'image sélectionnée
 
 let data_works = []; //data: Un tableau vide qui sera utilisé pour stocker les données récupérées depuis l'API.
 let data_categories = [];
 
-
+formModal.addEventListener("submit", async (e) => {
+  e.preventDefault(); 
+  await addImgViaModal (); // Appel de la fonction de connexion
+});
 
 // Fonction asynchrone pour créer le bouton modfier si on a le token 
 async function fetchData() {
@@ -133,35 +138,27 @@ allEl.addEventListener('click', () => {   // Lorsque l'utilisateur clique sur l'
 
 
 
-// Sélectionnez le formulaire
-const modalForm = document.getElementById('submit-btn');
-
-// Ajoutez un gestionnaire d'événements pour le formulaire
-modalForm.addEventListener('submit', function (event) {
-    event.preventDefault(); // Empêche l'envoi du formulaire par défaut
-
-    // Appelle la fonction pour ajouter l'image à l'API
-    addImgViaModal();
-});
-
   async function addImgViaModal () {
-
+    console.log("babla");
   const formData = new FormData();
   formData.append('image', imageInput.files[0]);
   formData.append('title', titleInput.value);
   formData.append('category', formOptions.value);
 
+    const token = sessionStorage.getItem("Token")
+
   try {
     const response = await fetch(`http://localhost:5678/api/works`, {
       method: "POST",  //Elle envoie une requête au serveur local
       headers: {
-        "Content-Type": "application/json", 
+         
         "Authorization": `Bearer ${token}`,
       }, 
       body: formData,
     });
     if (response.ok) {
       const data = await response.json();
+
       // Afficher l'image sélectionnée à la place des éléments du formulaire
       
     } else {
