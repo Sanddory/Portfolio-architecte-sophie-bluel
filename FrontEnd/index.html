@@ -16,12 +16,25 @@
 </head>
 <body>
 <header>
+
+<!-- MODULE ADMIN -->
+<aside class="admin__rod" aria-hidden="true" style="display: none;">
+	<div class="admin__modifer">
+		<i class="fa-solid fa-pen-to-square"></i>
+		<p>Mode édition</p>
+	</div>
+	<a href="./login.html">
+		<button>Publier les changements</button>
+	</a>
+</aside>
+
+
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li><a href="login.html" id="login">login</a></li>
+			<li class="remplacer"><a href="login.html" id="login">login</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -79,8 +92,10 @@
 		<button id="close-modal"><i class="fa-solid fa-xmark"></i></button>
 		<h3>Galerie Photo</h3>
 		<div class="modal-gallery"></div>
+		<hr class="barre-grise">
 		<div class="modal-bas">
 			<button class="addModalpic">Ajouter une Photo</button>
+		</div>
 		</div>
 	</div>
 	<div class="modal-wrapper2">
@@ -109,8 +124,10 @@
 				</select>
 			</div>
 		</div>
+		<hr class="barre-grise">
 		<div class="modal-bas2">
 			<button class="addModalpic" >Valider</button>
+		</div>
 		</div>
 		</form>
 	</div>

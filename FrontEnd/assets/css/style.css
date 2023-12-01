@@ -295,6 +295,26 @@ li a {
 /* Styles pour la fenêtre modale */
 
 
+#open-modal {
+  position: absolute;
+    font-family: 'Work Sans';
+    font-size: 14px;
+    border: none;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    margin-left: 684px;
+    bottom: 380px;
+    ;
+
+}
+
+.modal-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  padding: 0 90px;
+}
+
 .modal-container {
 	display: none; /* Par défaut, la modale est masquée */
 	position: fixed;
@@ -317,7 +337,7 @@ li a {
 	border: 1px solid #ccc;
 	border-radius: 10px; 
   }
-  
+
   #close-modal {
 	position: absolute;
 	top: 10px;
@@ -330,7 +350,36 @@ li a {
 	font-weight: 400;
 	font-size: 26px;
 	text-align: center;
+  margin-top: 35px;
+  margin-bottom: 40px;
 
+  }
+  .modal-wrapper img {
+    margin-bottom: 30px;
+  }
+    
+  .modal-gallery .fa-solid {
+    position: relative;
+    bottom: 130px;
+    left: 53px;
+    color: white;
+    background-color: black;
+    padding: 4px;
+    border-radius: 5px;
+  }
+  
+  .barre-grise {
+    position: relative;
+    border-top: 1px solid #B3B3B3;
+    width: 375px;
+    margin: 40px 0 40px 125px;
+  }
+
+  .modal-bas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:50px;
   }
 
   .modal-gallery .imgAdm {
@@ -473,4 +522,46 @@ li a {
 	font-size: 26px;
 	text-align: center;
 
+  }
+
+
+  /* edition */
+  
+  .admin__rod button:hover {
+    background-color: #1D6154;
+    color: white;
+  }
+
+  .admin__rod {
+    position: fixed;
+    right: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 40px;
+    background-color: black;
+  }
+  
+  .admin__rod button {
+    font-family: "work sans";
+    font-weight: 550;
+    background-color: white;
+    border-radius: 60px;
+    padding: 5px 15px;
+    margin: 0 25px;
+    border: none;
+    transition: all 0.2s ease;
+  }
+  
+  .admin__modifer {
+    display: flex;
+    -moz-column-gap: 5px;
+         column-gap: 5px;
+    color: black;
+  }
+  
+  .admin__rod .admin__modifer {
+    color: white;
   }

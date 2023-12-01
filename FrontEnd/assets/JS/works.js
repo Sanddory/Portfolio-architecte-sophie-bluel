@@ -37,6 +37,14 @@ async function fetchData() {
       ButtonModifier.id = "open-modal";
       ButtonModifier.className = "fa-solid fa-trash-can";
 
+      const loginEl = document.querySelector(".remplacer");
+      loginEl.innerHTML = "logout";
+      loginEl.addEventListener("click", () => {
+        // Supprime le jeton d'authentification de la session et redirige vers la page d'accueil
+        sessionStorage.removeItem("Token");
+        window.location.href = "index.html";
+      });
+
       ButtonModifier.addEventListener("click", function () {  // un listener pour ouvrir la bonne modale 
       modalContainer.style.display = "block"; // Ouvrir la modale
       modalWrapper1.style.display = "block";
@@ -110,7 +118,7 @@ async function deleteImg (id) {
       method: "DELETE",  //Elle envoie une requête DELETE au serveur local
       headers: {
         "Content-Type": "application/json", 
-        "Authorization": `Bearer ${tokenSession}` 
+        "Authorization": `Bearer ${token}` 
       }, 
     });
 }
@@ -176,7 +184,9 @@ document.getElementById('photo').addEventListener('change', function () {
   labelImg.innerHTML = ""; // Supprime les éléments existants
   const imgElement = document.createElement('img');
   imgElement.src = URL.createObjectURL(this.files[0]);
-  imgElement.style.maxWidth = '50%';
+  imgElement.style.maxWidth = '35%';
+  imgElement.style.position = 'relative';
+  imgElement.style.left = '33%';
   labelImg.appendChild(imgElement);
 });
 
@@ -214,5 +224,20 @@ addpicBtn.addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => { //Lorsque le document HTML est entièrement chargé, l'événement "DOMContentLoaded" est déclenché.
   fetchData(); //Lors de cet événement, la fonction fetchData est appelée pour récupérer les données depuis l'API et les afficher dans la galerie.
 });
+
+
+// Récupérez le token depuis 
+const userToken = sessionStorage.getItem('Token');
+
+// Vérifiez si l'utilisateur est connecté en utilisant le token (ajustez cela en fonction de votre méthode d'authentification)
+if (userToken) {
+    // Si l'utilisateur est connecté, changez la propriété display à "block"
+    const asideElement = document.querySelector('.admin__rod ');
+    
+    if (asideElement) {
+     
+        asideElement.style.display = 'flex';
+    }
+}
 
 
