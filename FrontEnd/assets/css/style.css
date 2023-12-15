@@ -211,6 +211,11 @@ footer nav ul {
     color: white;
     cursor: pointer;
 }
+.selected {
+  background: #1D6154;
+  color: white;
+  cursor: pointer;
+}
 
 .bold {
     font-weight: bold;
@@ -274,6 +279,9 @@ li a {
     color: black;
 }
 
+.remplacer {
+  cursor: pointer;
+}
 .validate {
     position: fixed;
     left: 660px;
@@ -325,7 +333,7 @@ li a {
 	background-color: rgba(0, 0, 0, 0.3); /* Arrière-plan semi-transparent */
   }
   
-  .modal-wrapper {
+  .modal-window {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -345,7 +353,7 @@ li a {
 	cursor: pointer;
   }
 
-  .modal-wrapper h3 {
+  .modal-window h3 {
 	font-family: 'work Sans';
 	font-weight: 400;
 	font-size: 26px;
@@ -354,7 +362,7 @@ li a {
   margin-bottom: 40px;
 
   }
-  .modal-wrapper img {
+  .modal-window img {
     margin-bottom: 30px;
   }
     
@@ -503,7 +511,7 @@ li a {
 	cursor: pointer;
   }
 
-  .modal-wrapper2 {
+  .modal-window2 {
 	position: absolute;
 	top: 50%;
 	left: 50%;
@@ -516,7 +524,7 @@ li a {
 	border-radius: 10px; 
   }
 
-  .modal-wrapper2 h3 {
+  .modal-window2 h3 {
 	font-family: 'work Sans';
 	font-weight: 400;
 	font-size: 26px;

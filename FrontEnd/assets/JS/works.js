@@ -7,17 +7,13 @@ const galleryAdmin = document.querySelector(".modal-gallery");
 const ButtonModifierDiv = document.querySelector(".edit-position");
 const optionEl = document.querySelector(".js-categoryId");
 const previousModalPic = document.getElementById("previous-modal");
-const modalWrapper1 = document.querySelector(".modal-wrapper");
-const modalWrapper2 = document.querySelector(".modal-wrapper2");
+const modalWindow1 = document.querySelector(".modal-window");
+const modalWindow2 = document.querySelector(".modal-window2");
 const addpicBtn = document.querySelector(".addModalpic");
-
-
 const imageInput = document.getElementById('photo');
 const titleInput = document.querySelector(".form-title input");
 const formOptions = document.querySelector(".form-options select");
-
 const formModal = document.querySelector(".modal-form");
-
 const labelImg = document.querySelector('.label-img'); // Élément pour afficher l'image sélectionnée
 
 let data_works = []; //data: Un tableau vide qui sera utilisé pour stocker les données récupérées depuis l'API.
@@ -47,8 +43,8 @@ async function fetchData() {
 
       ButtonModifier.addEventListener("click", function () {  // un listener pour ouvrir la bonne modale 
       modalContainer.style.display = "block"; // Ouvrir la modale
-      modalWrapper1.style.display = "block";
-      modalWrapper2.style.display = "none";
+      modalWindow1.style.display = "block";
+      modalWindow2.style.display = "none";
       });
       ButtonModifierDiv.appendChild(ButtonModifier); //Créer le bouton modifier dans le html 
     }
@@ -123,6 +119,19 @@ async function deleteImg (id) {
     });
 }
 
+var currentButton = null;
+
+function changeColor(button) {
+  if (currentButton !== null) {
+    currentButton.classList.remove("selected");
+    currentButton.disabled = false; // Réactiver l'ancien bouton
+  }
+
+  button.classList.add("selected");
+  button.disabled = true; // Désactiver le nouveau bouton
+  currentButton = button;
+}
+
 // Fonction qui créer les boutons de filtres et qui les filtres 
 function renderDataCategories(data) {
 
@@ -134,16 +143,18 @@ function renderDataCategories(data) {
     ButtonCat.addEventListener('click', () => {
       const filteredData = data_works.filter(item => item.category.name === item_categories.name);
       renderDataWorks(filteredData); 
+      changeColor(ButtonCat);
     })
     selectEl.appendChild(ButtonCat); // lie la const (qui connecte le HTML) à la const qui créer les Buttons avec l'API 
   })
 }
-const allEl = document.getElementById("all"); //Il y a quatre éléments HTML avec les IDs "all", "obj", "appart" et "hot-restau" qui servent de filtres pour la galerie.
+const allButton = document.getElementById("all"); //Il y a quatre éléments HTML avec les IDs "all", "obj", "appart" et "hot-restau" qui servent de filtres pour la galerie.
 
-allEl.addEventListener('click', () => {   // Lorsque l'utilisateur clique sur l'un de ces éléments, un événement de clic déclenche une fonction qui filtre les données en fonction de la catégorie, puis appelle renderData pour afficher les données filtrées.
+allButton.addEventListener('click', () => {   // Lorsque l'utilisateur clique sur le button all, un événement de clic déclenche une fonction qui filtre les données en fonction de la catégorie, puis appelle renderData pour afficher les données filtrées.
+
   renderDataWorks(data_works); 
+  changeColor(allButton);
 });
-
 
 
   async function addImgViaModal () {
@@ -211,13 +222,13 @@ closeModal2.addEventListener("click", function () {
 });
 
 previousModalPic.addEventListener("click", () => {
-  modalWrapper1.style.display = "block";
-  modalWrapper2.style.display = "none";
+  modalWindow1.style.display = "block";
+  modalWindow2.style.display = "none";
 })
 
 addpicBtn.addEventListener("click", () => {
-  modalWrapper1.style.display = "none";
-  modalWrapper2.style.display = "block";
+  modalWindow1.style.display = "none";
+  modalWindow2.style.display = "block";
 })
 
 // Écouteur d'événement pour le chargement du document
@@ -239,5 +250,4 @@ if (userToken) {
         asideElement.style.display = 'flex';
     }
 }
-
 
