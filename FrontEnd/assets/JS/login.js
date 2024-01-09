@@ -3,9 +3,9 @@
 const formLogin = document.querySelector("form");
 //Recherche et sélectionne le premier élément de formulaire dans le document HTML.
 const mailInput = document.querySelector("#login_email");
-//Recherche et sélectionne l'élément avec l'ID "login_email" dans le document HTML, supposément un champ d'entrée pour l'adresse e-mail.
+//Recherche et sélectionne l'élément avec l'ID "login_email" dans le document HTML, un champ d'entrée pour l'adresse e-mail.
 const passwordInput = document.querySelector("#password");
-//Recherche et sélectionne l'élément avec l'ID "password" dans le document HTML, supposément un champ d'entrée pour le mot de passe.
+//Recherche et sélectionne l'élément avec l'ID "password" dans le document HTML, un champ d'entrée pour le mot de passe.
 
 
 // Écouteur d'événement pour la soumission du formulaire
@@ -47,7 +47,7 @@ const login = async () => {
     const error_p = document.querySelector('.error');
     const success_p = document.querySelector(".success");
     //Sélectionne des éléments dans le document HTML avec les classes "error" et "success", 
-    //supposément pour afficher des messages d'erreur ou de réussite.
+    //pour afficher des messages d'erreur ou de réussite.
 
     if (resultat.token) {  //Vérifie si la réponse du serveur contient un jeton.
       // Authentification réussie
